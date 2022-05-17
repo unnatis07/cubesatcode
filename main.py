@@ -1,8 +1,21 @@
+#import libraries
+import time
+import os
+import board
+import busio
+import adafruit_bno055
+#from git import Repo
+from picamera import PiCamera
 
-from picamera import Picamera
+#setup imu and camera
+i2c = busio.I2C(board.SCL, board.SDA)
+sensor = adafruit_bno055.BNO055_I2C(i2c)
+camera = PiCamera()
+
+'''from picamera import Picamera
 import subprocess
 import time
-
+'''
 cmd = "raspistill - t 30000 - tl 2000 - o image % 04 d.jpg - w 720 - h 480"
 subprocess.call(cmd, shell=True)
 print("Done")
